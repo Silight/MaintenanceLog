@@ -58,21 +58,17 @@ public partial class Request : System.Web.UI.Page
         
         // Send and email to let them know about the request. 
         MailMessage message = new MailMessage();
-        SmtpClient client = new SmtpClient("smtp.gmail.com");
+        SmtpClient client = new SmtpClient(); // change this to reflect your mail client
 
         try
         {
             client.Port = 587;
-            client.Credentials = new System.Net.NetworkCredential("Maintenence.WayneCounty@gmail.com", "U9K33p1nG");
+            client.Credentials = new System.Net.NetworkCredential();//Enter email and password here. 
             client.EnableSsl = true;
 
-            message.Bcc.Add("aedwards@waynecountypa.gov");
-            message.To.Add("smartin@waynecountypa.gov");
-            message.Bcc.Add("pvanhorn@waynecountypa.gov");
-            message.Bcc.Add("JNewbon@waynecountypa.gov");
-            message.Bcc.Add("PMathews@waynecountypa.gov");
+            message.Bcc.Add();//Enter email of person you are sending to here
             
-            message.From = new MailAddress("Maintenence.WayneCounty@gmail.com"); // Maintenence is mispelled but this address is correct
+            message.From = new MailAddress(); // Enter email here
             message.Subject = "#" + workOrder + " " + DropDownUrgency.Text + ": " + Name.Text + " has sent a maintenance request";
 
             message.IsBodyHtml = true;
